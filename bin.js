@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 require('console.md')()
 var argv = require('minimist')(process.argv.slice(2));

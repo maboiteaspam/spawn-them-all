@@ -3,6 +3,9 @@
   "version": "1.0.2",
   "description": "cli node module to spawn and control multiple process",
   "main": "index.js",
+  "bin": {
+    "spawn-them-all": "./bin.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "patch": "npm version patch -m \"patch %s\"",

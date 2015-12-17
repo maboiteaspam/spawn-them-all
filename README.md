@@ -106,3 +106,12 @@ press `ctrl+f` again to leave `flow` mode.
 
 - https://github.com/TooTallNate/keypress
 - https://github.com/maboiteaspam/spawn-them-all/blob/master/.spawn
+
+
+## Develop
+
+```js
+git clone git@github.com:maboiteaspam/spawn-them-all.git
+cd spawn-them-all
+npm link . --local
+```
