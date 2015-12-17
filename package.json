@@ -1,0 +1,29 @@
+{
+    "name": "spawn-them-all",
+    "version": "1.0.0",
+    "description": "cli node module to spawn and control multiple process",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "patch": "npm version patch -m \"patch %s\"",
+        "minor": "npm version minor -m \"minor %s\"",
+        "major": "npm version major -m \"major %s\"",
+        "preversion": "echo \"npm test: not defined\" && npi --explicit",
+        "version": "echo \"npm run build: not defined\"",
+        "postversion": "git push && git push --tags"
+    },
+    "keywords": [
+        "node",
+        "cli",
+        "spawn",
+        "multiple",
+        "process"
+    ],
+    "author": "maboiteaspam",
+    "license": "WTF",
+    "dependencies": {
+        "debug": "^2.2.0",
+        "keypress": "^0.2.1",
+        "through2": "^2.0.0"
+    }
+}
