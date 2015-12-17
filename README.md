@@ -102,10 +102,13 @@ press `ctrl+f` again to leave `flow` mode.
 
 
 
-## More
+## Read More
 
-- https://github.com/TooTallNate/keypress
 - https://github.com/maboiteaspam/spawn-them-all/blob/master/.spawn
+- https://github.com/TooTallNate/keypress
+- https://github.com/rvagg/through2
+- https://github.com/nodejs/readable-stream/blob/master/doc/stream.markdown#stream_event_data
+- https://github.com/substack/stream-handbook
 
 
 ## Develop
