@@ -1,6 +1,6 @@
 {
   "name": "spawn-them-all",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cli node module to spawn and control multiple process",
   "main": "index.js",
   "scripts": {
@@ -23,9 +23,9 @@
   "license": "WTF",
   "dependencies": {
     "console.md": "maboiteaspam/console.md",
-    "debug": "^2.2.0",
-    "keypress": "^0.2.1",
-    "minimist": "^1.2.0",
-    "through2": "^2.0.0"
+    "debug": ">=2.2.0 <3.0.0-0",
+    "keypress": ">=0.2.1 <1.0.0-0",
+    "minimist": ">=1.2.0 <2.0.0-0",
+    "through2": ">=2.0.0 <3.0.0-0"
   }
 }
