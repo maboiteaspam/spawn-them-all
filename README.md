@@ -104,4 +104,5 @@ press `ctrl+f` again to leave `flow` mode.
 
 ## More
 
-Additional links and comments.
+- https://github.com/TooTallNate/keypress
+- https://github.com/maboiteaspam/spawn-them-all/blob/master/.spawn
