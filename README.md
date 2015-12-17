@@ -109,6 +109,7 @@ press `ctrl+f` again to leave `flow` mode.
 - https://github.com/rvagg/through2
 - https://github.com/nodejs/readable-stream/blob/master/doc/stream.markdown#stream_event_data
 - https://github.com/substack/stream-handbook
+- https://github.com/maboiteaspam/working-with-streams
 
 
 ## Develop
