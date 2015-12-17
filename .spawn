@@ -1,0 +1,23 @@
+
+var spawn = require('child_process').spawn;
+
+module.exports = function (spawners) {
+  spawners.addSpawner('pate', function () {
+    return spawn('node', ['dumb.js', 'pate'], {stdio:'pipe'})
+  })
+  spawners.addSpawner('basilic', function () {
+    return spawn('node', ['dumb.js', 'basilic'], {stdio:'pipe'})
+  })
+  spawners.addSpawner('tomate', function () {
+    return spawn('node', ['dumb.js', 'tomate'], {stdio:'pipe'})
+  })
+  spawners.addSpawner('salami', function () {
+    return spawn('node', ['dumb.js', 'salami'], {stdio:'pipe'})
+  })
+  spawners.addProfile('pizza', [
+    'pate',                 // need only 1
+    {'basilic':{units:2}},  // a bit of basil
+    {'salami':{units:3}},   // a bit of salami
+    {'tomate':{units:4}},   // more tomatoes for the sauce
+  ])
+};
