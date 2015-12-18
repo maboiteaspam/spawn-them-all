@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Spawn-them-all by maboiteaspam</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Spawn-them-all</h1>
+        <p>cli node module to provide an interface to better control output of multiple spawned child process.</p>
+
+        <p class="view"><a href="https://github.com/maboiteaspam/spawn-them-all">View the Project on GitHub <small>maboiteaspam/spawn-them-all</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/maboiteaspam/spawn-them-all/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/maboiteaspam/spawn-them-all/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/maboiteaspam/spawn-them-all">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="spawn-them-all" class="anchor" href="#spawn-them-all" aria-hidden="true"><span class="octicon octicon-link"></span></a>spawn-them-all</h1>
+
+<p>cli node module to provide an interface to better control output of multiple spawned child process.</p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<pre><code>npm i maboiteaspam/spawn-them-all -g
+</code></pre>
+
+<h2>
+<a id="command-line" class="anchor" href="#command-line" aria-hidden="true"><span class="octicon octicon-link"></span></a>Command line</h2>
+
+<div class="highlight highlight-source-shell"><pre>    spawn-them-all is a node binary.
+
+    spawn-them-all -p<span class="pl-k">|</span>--profile [profile of child to spawn]
+    spawn-them-all -v [verbose mode]</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Create a file on the <code>cwd</code></p>
+
+<p><strong>.spawn</strong></p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> spawn <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>child_process<span class="pl-pds">'</span></span>).<span class="pl-smi">spawn</span>;
+<span class="pl-k">function</span> <span class="pl-en">topping</span> (<span class="pl-smi">name</span>) {
+  <span class="pl-k">return</span> <span class="pl-k">function</span> () {
+    <span class="pl-k">return</span> <span class="pl-en">spawn</span>(<span class="pl-s"><span class="pl-pds">'</span>node<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>dumb.js<span class="pl-pds">'</span></span>, name], {stdio<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>pipe<span class="pl-pds">'</span></span>});
+  }
+}
+
+<span class="pl-c1">module</span>.<span class="pl-en">exports</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">spawners</span>) {
+
+  <span class="pl-smi">spawners</span>.<span class="pl-en">addSpawner</span>(<span class="pl-s"><span class="pl-pds">'</span>pate<span class="pl-pds">'</span></span>,       <span class="pl-en">topping</span>(<span class="pl-s"><span class="pl-pds">'</span>pate<span class="pl-pds">'</span></span>))
+  <span class="pl-smi">spawners</span>.<span class="pl-en">addSpawner</span>(<span class="pl-s"><span class="pl-pds">'</span>basilic<span class="pl-pds">'</span></span>,    <span class="pl-en">topping</span>(<span class="pl-s"><span class="pl-pds">'</span>basilic<span class="pl-pds">'</span></span>))
+  <span class="pl-smi">spawners</span>.<span class="pl-en">addSpawner</span>(<span class="pl-s"><span class="pl-pds">'</span>tomate<span class="pl-pds">'</span></span>,     <span class="pl-en">topping</span>(<span class="pl-s"><span class="pl-pds">'</span>tomate<span class="pl-pds">'</span></span>))
+  <span class="pl-smi">spawners</span>.<span class="pl-en">addSpawner</span>(<span class="pl-s"><span class="pl-pds">'</span>salami<span class="pl-pds">'</span></span>,     <span class="pl-en">topping</span>(<span class="pl-s"><span class="pl-pds">'</span>salami<span class="pl-pds">'</span></span>))
+
+  <span class="pl-smi">spawners</span>.<span class="pl-en">addProfile</span>(<span class="pl-s"><span class="pl-pds">'</span>pizza<span class="pl-pds">'</span></span>, [    <span class="pl-c">// the recipe:</span>
+    <span class="pl-s"><span class="pl-pds">'</span>pate<span class="pl-pds">'</span></span>,                         <span class="pl-c">// need 1 pasta</span>
+    {<span class="pl-s"><span class="pl-pds">'</span>basilic<span class="pl-pds">'</span></span><span class="pl-k">:</span> {units<span class="pl-k">:</span><span class="pl-c1">2</span>}},         <span class="pl-c">// a bit of basil</span>
+    {<span class="pl-s"><span class="pl-pds">'</span>salami<span class="pl-pds">'</span></span><span class="pl-k">:</span>  {units<span class="pl-k">:</span><span class="pl-c1">3</span>}},         <span class="pl-c">// a bit of salami</span>
+    {<span class="pl-s"><span class="pl-pds">'</span>tomate<span class="pl-pds">'</span></span><span class="pl-k">:</span>  {units<span class="pl-k">:</span><span class="pl-c1">4</span>}},         <span class="pl-c">// more tomatoes for the sauce</span>
+  ])
+};
+</pre></div>
+
+<p>Invoke <code>spawn-them-all</code> with <code>pizza</code> profile.</p>
+
+<div class="highlight highlight-source-shell"><pre>spawn-them-all -p pizza</pre></div>
+
+<p>A menu appears to you, it let you select which process you d prefer to listen to,</p>
+
+<div class="highlight highlight-source-shell"><pre>Menu: pizza
+
+    <span class="pl-k">*</span> A - Menu page
+    <span class="pl-k">*</span> B - process pate 0
+    <span class="pl-k">*</span> C - process basilic 0
+    <span class="pl-k">*</span> D - process basilic 1
+    <span class="pl-k">*</span> E - process salami 0
+    <span class="pl-k">*</span> F - process salami 1
+    <span class="pl-k">*</span> G - process salami 2
+    <span class="pl-k">*</span> H - process tomate 0
+    <span class="pl-k">*</span> I - process tomate 1
+    <span class="pl-k">*</span> J - process tomate 2
+    <span class="pl-k">*</span> K - process tomate 3</pre></div>
+
+<p>Press <code>b</code>, to switch to process <code>pate{0}</code>,</p>
+
+<div class="highlight highlight-source-shell"><pre>pate
+pate
+...</pre></div>
+
+<p>press <code>d</code> to switch to process <code>D{1}</code>.</p>
+
+<div class="highlight highlight-source-shell"><pre>basilic
+basilic
+...</pre></div>
+
+<p>press <code>ctrl+f</code> to enter <code>flow</code> mode, where you can listen multiple process at same time.</p>
+
+<p>press <code>d</code>, then <code>b</code>,</p>
+
+<div class="highlight highlight-source-shell"><pre>basilic
+pate
+basilic
+pate
+...</pre></div>
+
+<p>press <code>ctrl+a</code> to listen all process, press it again to reduce to one.</p>
+
+<p>press <code>ctrl+f</code> again to leave <code>flow</code> mode.</p>
+
+<h2>
+<a id="read-more" class="anchor" href="#read-more" aria-hidden="true"><span class="octicon octicon-link"></span></a>Read More</h2>
+
+<ul>
+<li><a href="https://github.com/maboiteaspam/spawn-them-all/blob/master/.spawn">https://github.com/maboiteaspam/spawn-them-all/blob/master/.spawn</a></li>
+<li><a href="https://github.com/TooTallNate/keypress">https://github.com/TooTallNate/keypress</a></li>
+<li><a href="https://github.com/rvagg/through2">https://github.com/rvagg/through2</a></li>
+<li><a href="https://github.com/nodejs/readable-stream/blob/master/doc/stream.markdown#stream_event_data">https://github.com/nodejs/readable-stream/blob/master/doc/stream.markdown#stream_event_data</a></li>
+<li><a href="https://github.com/substack/stream-handbook">https://github.com/substack/stream-handbook</a></li>
+<li><a href="https://github.com/maboiteaspam/working-with-streams">https://github.com/maboiteaspam/working-with-streams</a></li>
+</ul>
+
+<h2>
+<a id="develop" class="anchor" href="#develop" aria-hidden="true"><span class="octicon octicon-link"></span></a>Develop</h2>
+
+<div class="highlight highlight-source-js"><pre>git clone git@<span class="pl-smi">github</span>.<span class="pl-smi">com</span><span class="pl-k">:</span>maboiteaspam<span class="pl-k">/</span>spawn<span class="pl-k">-</span>them<span class="pl-k">-</span><span class="pl-smi">all</span>.<span class="pl-smi">git</span>
+cd spawn<span class="pl-k">-</span>them<span class="pl-k">-</span>all
+npm link . <span class="pl-k">--</span>local</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/maboiteaspam">maboiteaspam</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
