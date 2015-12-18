@@ -22,27 +22,27 @@ Create a file on the `cwd`
 __.spawn__
 ```js
 var spawn = require('child_process').spawn;
+function topping (name) {
+  return function () {
+    return spawn('node', ['dumb.js', name], {stdio:'pipe'});
+  }
+}
 
 module.exports = function (spawners) {
-  spawners.addSpawner('pate', function () {
-    return spawn('node', ['dumb.js', 'pate'], {stdio:'pipe'})
-  })
-  spawners.addSpawner('basilic', function () {
-    return spawn('node', ['dumb.js', 'basilic'], {stdio:'pipe'})
-  })
-  spawners.addSpawner('tomate', function () {
-    return spawn('node', ['dumb.js', 'tomate'], {stdio:'pipe'})
-  })
-  spawners.addSpawner('salami', function () {
-    return spawn('node', ['dumb.js', 'salami'], {stdio:'pipe'})
-  })
-  spawners.addProfile('pizza', [
-    'pate',                 // need only 1
-    {'basilic':{units:2}},  // a bit of basil
-    {'salami':{units:3}},   // a bit of salami
-    {'tomate':{units:4}},   // more tomatoes for the sauce
+
+  spawners.addSpawner('pate',       topping('pate'))
+  spawners.addSpawner('basilic',    topping('basilic'))
+  spawners.addSpawner('tomate',     topping('tomate'))
+  spawners.addSpawner('salami',     topping('salami'))
+
+  spawners.addProfile('pizza', [    // the recipe:
+    'pate',                         // need 1 pasta
+    {'basilic': {units:2}},         // a bit of basil
+    {'salami':  {units:3}},         // a bit of salami
+    {'tomate':  {units:4}},         // more tomatoes for the sauce
   ])
 };
+
 ```
 
 Invoke `spawn-them-all` with `pizza` profile.
@@ -97,6 +97,8 @@ basilic
 pate
 ...
 ```
+
+press `ctrl+a` to listen all process, press it again to reduce to one.
 
 press `ctrl+f` again to leave `flow` mode.
 
