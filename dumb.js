@@ -5,7 +5,7 @@ require('fs').open('.gitignore', 'r', function (err, fd) {
   }, 500)
   process.on('SIGINT', function() {
     clearInterval(s)
-    fs.close(fd, function () {
+    require('fs').close(fd, function () {
       process.exit()
     })
   });
