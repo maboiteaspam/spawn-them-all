@@ -1,6 +1,6 @@
 {
   "name": "spawn-them-all",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "cli node module to spawn and control multiple process",
   "main": "index.js",
   "bin": {
