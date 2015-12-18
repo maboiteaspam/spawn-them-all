@@ -23,19 +23,23 @@ function Spawners (file) {
 function Spawned(opt){
   var that = this;
 
-  that.id       = 'id' in opt ? opt.id : null;
-  that.name     = opt.name || null;
-  that.child    = opt.child || null;
+  that.name     = opt.name    || null;
+  that.child    = opt.child   || null;
   that.profile  = opt.profile || null;
+
+  that.id       = 'id' in opt     ? opt.id    : null;
+  that.index    = 'index' in opt  ? opt.index : null;
 
 
   that.pipe = function (stdout, stderr) {
     var child = that.child; var name = that.name;
 
-    debug('unpipe %s stdout:%j stderr:%j', name, child && !!child.stdout, child && !!child.stderr)
+    debug('pipe %s stdout:%j stderr:%j', name, child && !!child.stdout, child && !!child.stderr)
 
-    child && child.stdout && child.stdout.unpipe(stdout)
-    child && child.stderr && child.stderr.unpipe(stderr)
+    that.unpipe(stdout, stderr);
+
+    child && child.stdout && child.stdout.pipe(stdout)
+    child && child.stderr && child.stderr.pipe(stderr)
   }
   that.unpipe = function (stdout, stderr) {
     var child = that.child; var name = that.name;

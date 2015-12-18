@@ -35,7 +35,7 @@ function showMainPage () {
 }
 
 function unpipeAll () {
-  while(currentSpawn.length>1){
+  while(currentSpawn.length>0){
     currentSpawn.shift().unpipe(process.stdout, process.stderr)
   }
 }
@@ -55,6 +55,16 @@ function showProcessStreams (k) {                                               
     spawned[k].pipe(process.stdout, process.stderr)
     currentSpawn.push(spawned[k])
   }
+
+}
+
+function showAllProcess () {
+
+  currentSpawn = []
+
+  spawned.forEach(function (s, k) {
+    showProcessStreams(k)
+  })
 
 }
 
@@ -99,7 +109,10 @@ process.stdin.on('keypress', function (ch, key) {
     terminateApp()
 
   }else if (key && key.ctrl && key.name == 'f') {
-    mode = switchFlowMode(mode==='one'?'flow':'one')
+    switchFlowMode(mode==='one'?'flow':'one')
+
+  }else if (key && key.ctrl && key.name == 'a') {
+    showAllProcess()
 
   }else if (key && key.name == 'a') {
     gotoMenu()
